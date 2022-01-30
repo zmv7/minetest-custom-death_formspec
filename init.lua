@@ -6,18 +6,17 @@ local dformspec = "size[4,3.5]bgcolor[#320000b4;true]" ..
 
 core.register_on_death(function()
 	core.display_chat_message(minetest.colorize("#F00","You died at " .. core.pos_to_string(vector.round(core.localplayer:get_pos()))))
-	core.show_formspec("bultin:death", dformspec)
+	core.show_formspec("df", dformspec)
 end)
 
 core.register_on_formspec_input(function(formname, fields)
-	if formname == "bultin:death" then
+	if formname == "df" then
 		if fields.btn_disconnect then
-		core.disconnect()
-		elseif
-		fields.btn_ghostmode then
-			core.display_chat_message(minetest.colorize("#FF0","GhostMode active. Type '.resp' to respawn."))
+		    core.disconnect()
+		elseif fields.btn_respawn then
+		    core.send_respawn()
 		else
-			core.send_respawn()
+		    core.display_chat_message(minetest.colorize("#FF0","GhostMode active. Type '.resp' to respawn."))
 		end
 	end
 end)
