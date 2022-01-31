@@ -1,12 +1,10 @@
-local formspec = "size[4,3.5]" ..
+core.register_on_death(function()
+	core.display_chat_message(minetest.colorize("#F00","You died at " .. core.pos_to_string(vector.round(core.localplayer:get_pos()))))
+	core.show_formspec("cdf", "size[4,3.5]" ..
 		"label[1.45,0;" .. fgettext("You died") ..
 		"]button_exit[1,1;2,0.5;btn_respawn;".. fgettext("Respawn") ..
 		"]button_exit[1,2;2,0.5;btn_ghostmode;" .. "GhostMode" .. 
-		"]button_exit[1,3;2,0.5;btn_disconnect;" .. fgettext("Exit to Menu") .. "]"
-
-core.register_on_death(function()
-	core.display_chat_message(minetest.colorize("#F00","You died at " .. core.pos_to_string(vector.round(core.localplayer:get_pos()))))
-	core.show_formspec("cdf", formspec)
+		"]button_exit[1,3;2,0.5;btn_disconnect;" .. fgettext("Exit to Menu") .. "]")
 end)
 
 core.register_on_formspec_input(function(formname, fields)
