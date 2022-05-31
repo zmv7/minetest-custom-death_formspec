@@ -17,10 +17,11 @@ core.register_on_death(function()
 	core.display_chat_message(minetest.colorize("#F00","You died at "..core.pos_to_string(vector.round(DP))))
 	core.show_formspec("cdf", "size[4,4.2]"..
 		"label[1.45,0;"..fgettext("You died")..
-		"]button_exit[1,1;2,0.5;respawn;"..fgettext("Respawn") ..
+		"]button_exit[1,1;2,0.5;respawn;"..fgettext("Respawn")..
+		"]set_focus[ghostmode;true"..
 		"]button_exit[1,2;2,0.5;ghostmode;GhostMode"..
 		"]button_exit[1,3;2,0.5;disconnect;"..fgettext("Exit to Menu")..
-        	"]checkbox[1,3.8;dpoint;Set DeathPoint;false]")
+		"]checkbox[1,3.8;dpoint;Set DeathPoint;false]set_focus[ghostmode]")
 end)
 
 core.register_on_formspec_input(function(formname, fields)
