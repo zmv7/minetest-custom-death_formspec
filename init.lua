@@ -16,7 +16,7 @@ core.register_on_death(function()
     DP = core.localplayer:get_pos()
 	core.display_chat_message(core.colorize("#F00","You died at "..core.pos_to_string(vector.round(DP))))
 	local sinfo = core.get_server_info()
-	core.log("action",core.localplayer:get_name().." dies at "..core.pos_to_string(vector.round(DP)).." on server "..(sinfo.address and sinfo.address ~= "" or sinfo.ip)..":"..sinfo.port)
+	core.log("action",core.localplayer:get_name().." dies at "..core.pos_to_string(vector.round(DP)).." on server "..(sinfo.address ~= "" and sinfo.address or sinfo.ip)..":"..sinfo.port)
 	core.show_formspec("cdf", "size[4,4.6]"..
 		"label[1.45,0;"..fgettext("You died")..
 		"]button_exit[1,1;2,0.5;respawn;"..fgettext("Respawn")..
